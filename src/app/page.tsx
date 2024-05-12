@@ -1,7 +1,6 @@
-import { MessageCard } from "@/components";
-import { MessageMapper } from "@/components/MessageMapper";
 import { Imessage } from "@/types/message.interface";
-
+import { AudioPlayer } from "@/components/AudioPlayer";
+import { MessageMapper } from "@/components/MessageMapper";
 
 export default function Home() {
   const exampleMensage1: Imessage = {
@@ -26,7 +25,11 @@ export default function Home() {
 
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-start
+    p-6 md:p-12 gap-2
+     ">
+      <audio src="" ></audio>
+      <AudioPlayer />
       <MessageMapper dataMessages={exampleConversation} />
     </main>
   );
