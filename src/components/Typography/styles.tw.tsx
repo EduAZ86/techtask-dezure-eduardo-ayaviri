@@ -59,7 +59,7 @@ export const Paragraph: FC<ITypographyProps> = ({ align = 'text-left', bold = fa
             className={`
             md:${align} ${bold ? 'font-bold' : 'font-light'} 
             ${textSize ? textSize : 'text-sm'}
-            font-roboto
+            font-roboto   
              m-0               
              `
             }

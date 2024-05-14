@@ -18,4 +18,12 @@ export const useAudioStore = create<IAudioStore>((set, get) => ({
     setDuration(duration) {
         set(() => ({ duration }))
     },
+    stopAndClear() {
+        set(() => ({
+            audio: null,
+            isPlaying: false,
+            currentTime: 0,
+            duration: 0
+        }))
+    },
 }))

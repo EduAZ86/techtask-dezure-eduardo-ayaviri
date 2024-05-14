@@ -8,8 +8,9 @@ export const InputFile: FC<IInputFileProps> = ({ handleFileChange }) => {
 
     const handleButtonClick = () => {
         if (fileInputRef.current) {
-            fileInputRef.current.click(); // Simula el clic en el input de tipo file
+            fileInputRef.current.click();
         }
+        handleFileChange()
     };
 
     return (
@@ -20,6 +21,7 @@ export const InputFile: FC<IInputFileProps> = ({ handleFileChange }) => {
                 accept="audio/*"
                 onChange={handleFileChange}
                 style={{ display: "none" }}
+                disabled
             />
             <AddFileButton
                 handleClick={handleButtonClick}

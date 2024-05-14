@@ -20,7 +20,7 @@ export const MessageCardContainer: FC<IMessageCardContainerProps> = ({ children,
     )
 }
 
-export const MessageContainer: FC<IMessageContainerProps> = ({ children, role }) => {
+export const MessageContainer: FC<IMessageContainerProps> = ({ children, role, handleClick }) => {
     return (
         <div
             className={`
@@ -29,13 +29,14 @@ export const MessageContainer: FC<IMessageContainerProps> = ({ children, role })
                 rounded-2xl
                 ${role === 'agent'
                     ? ` bg-light-primary rounded-br-sm text-light-secundary dark:text-dark-secundary`
-                    : ` bg-light-secundary rounded-bl-sm text-light-text dark:text-dark-text`
+                    : ` bg-light-secundary rounded-bl-sm text-light-primary dark:text-dark-secundary`
                 }             
                 p-4 
                 cursor-pointer
                 hover:brightness-75
               
             `}
+            onClick={handleClick}
         >
             {children}
         </div>

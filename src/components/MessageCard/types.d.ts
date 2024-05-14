@@ -1,8 +1,8 @@
-import { Imessage, TRole } from "@/types/message.interface";
+import { ITranscribedMessage, TRole } from "@/types/transcribedMessage.interface";
 import { ReactNode } from "react";
 
 export interface IMessageCardProps {
-    cardData: Imessage;
+    cardData: ITranscribedMessage;
 }
 
 export interface IMessageCardContainerProps {
@@ -10,7 +10,9 @@ export interface IMessageCardContainerProps {
     role: TRole;
 }
 
-export interface IMessageContainerProps extends IMessageCardContainerProps { }
+export interface IMessageContainerProps extends IMessageCardContainerProps {
+    handleClick?: (event: MouseEvent<HTMLDivElement>) => void;
+}
 
 export interface IUserIconContainerProps extends IMessageCardContainerProps { }
 

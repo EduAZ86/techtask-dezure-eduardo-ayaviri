@@ -1,5 +1,6 @@
+import { postFileTOTranscription } from "@/services/fetching";
 import { useAudioStore } from "@/zustand/useAudioStore";
-import { useEffect } from "react"
+import { useEffect, useState } from "react";
 
 export const useAudioFile = () => {
 
@@ -11,16 +12,20 @@ export const useAudioFile = () => {
         currentTime,
         setCurrentTime,
         duration,
-        setDuration
+        setDuration,
     } = useAudioStore()
 
+    const [isAudioInitialized, setIsAudioInitialized] = useState(false);
+
     useEffect(() => {
+
         if (audio) {
             const handleTimeUpdate = () => {
                 setCurrentTime(audio.currentTime);
             };
             const handleLoadedMetadata = () => {
                 setDuration(audio.duration);
+                setIsAudioInitialized(true);
             };
 
             audio.addEventListener("timeupdate", handleTimeUpdate);
@@ -34,12 +39,20 @@ export const useAudioFile = () => {
     }, [audio]);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            const audioFile = new Audio(URL.createObjectURL(file));
-            setAudio(audioFile);
-        }
+        // e.preventDefault()
+        // const file = e.target.files?.[0];
+        // if (file) {
+        //     const audioFile = new Audio(URL.createObjectURL(file));
+        //     setAudio(audioFile);
+        //     // postFileTOTranscription(file);
+        // }
+        loadTestCall()
     };
+    const loadTestCall = () => {
+        const filePath = "/TestCall.wav";
+        const audioFile = new Audio(filePath);
+        setAudio(audioFile);
+    }
 
     const togglePlay = () => {
         if (audio) {
@@ -58,7 +71,24 @@ export const useAudioFile = () => {
             audio.currentTime = newTime;
             setCurrentTime(newTime);
         }
+        
     };
-    return { currentTime, isPlaying, setCurrentTime, duration, handleSeek, togglePlay, handleFileChange }
-}
+    const handleStop = () => {
+        if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+            setIsPlaying(false);
+        }
+    };
 
+    return {
+        currentTime,
+        isPlaying,
+        duration,
+        handleSeek,
+        togglePlay,
+        handleFileChange,
+        handleStop,
+        isAudioInitialized,
+    };
+}

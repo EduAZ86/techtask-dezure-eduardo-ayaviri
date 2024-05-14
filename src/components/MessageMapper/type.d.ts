@@ -1,4 +1,4 @@
-import { Imessage } from "@/types/message.interface";
+import { Imessage } from "@/types/transcribedMessage.interface";
 import { ReactNode } from "react";
 
 export interface IMessageMapperProps {

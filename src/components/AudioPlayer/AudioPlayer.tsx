@@ -12,11 +12,10 @@ export const AudioPlayer: FC = () => {
         handleFileChange,
         handleSeek,
         togglePlay,
-        setCurrentTime
+        handleStop,       
     } = useAudioFile()
-    const handleStop = () => {
-        setCurrentTime(0)
-    }
+
+
     return (
         <AudioPlayerContainer>
             <AudioControllerContainer>

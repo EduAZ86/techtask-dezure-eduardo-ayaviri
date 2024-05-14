@@ -2,6 +2,8 @@ import { FC } from "react"
 import { IAudioControllerContainerProps, IAudioPlayerContainerProps, IButtonsContainerProps, IControlButtonProps, IProgressionBarProps, ITitleAudioContainerProps } from "./types"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPause, faPlay, faStop } from "@fortawesome/free-solid-svg-icons"
+import { Typography } from "../Typography"
+import { formatTime } from "@/utils/formatTime"
 
 export const AudioPlayerContainer: FC<IAudioPlayerContainerProps> = ({ children }) => {
     return (
@@ -95,8 +97,12 @@ export const ProgressionBar: FC<IProgressionBarProps> = ({ currentTime, duration
             className={`
                 w-full h-fit
                 p-3
+                flex relative
+                flex-row
+                gap-2
             `}
         >
+            <Typography variant="label" key={'currentTime'}>{formatTime(currentTime)}</Typography>
             <input
                 type="range"
                 value={currentTime}
@@ -105,6 +111,8 @@ export const ProgressionBar: FC<IProgressionBarProps> = ({ currentTime, duration
                 step={0.01}
                 className="w-full"
             />
+            <Typography variant="label" key={'duration'}>{formatTime(duration)}</Typography>
+
         </div>
     )
 }
