@@ -10,13 +10,11 @@ export interface ITypographyProps extends PropsWithChildren {
 };
 
 export type TTypographyVariant = {
-    mainTitle: FC<ITypographyProps>;
     title: FC<ITypographyProps>;
     subTitle: FC<ITypographyProps>;
-    cardTitle: FC<ITypographyProps>;
-    textCodeColor: FC<ITypographyProps>;
     paragraph: FC<ITypographyProps>;
-    error: FC<ITypographyProps>;
-    textButton: FC<ITypographyProps>;
     label: FC<ITypographyProps>;
+    textButton: FC<ITypographyProps>;
+    secundaryText: FC<ITypographyProps>;
+    error: FC<ITypographyProps>;
 };
